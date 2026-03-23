@@ -1,13 +1,15 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { LandingLayout } from './shared/layout/LandingLayout'
+import { AppProvider } from './providers/AppProvider'
+import { AppRouter } from './routes'
 
+/**
+ * Main App Component.
+ * Simplified using AppProvider and AppRouter abstractions.
+ */
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<LandingLayout />}></Route>
-      </Routes>
-    </BrowserRouter>
+    <AppProvider>
+      <AppRouter />
+    </AppProvider>
   )
 }
 
