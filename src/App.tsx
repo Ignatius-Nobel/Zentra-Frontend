@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import AppLayout from '@/components/layout/AppLayout'
+import { LandingLayout } from './shared/layout/LandingLayout'
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<AppLayout />}></Route>
+        <Route element={<LandingLayout />}></Route>
       </Routes>
     </BrowserRouter>
   )
