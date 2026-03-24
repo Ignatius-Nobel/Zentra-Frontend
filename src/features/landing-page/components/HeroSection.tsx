@@ -1,6 +1,7 @@
 import { Button } from '@/shared/ui/button'
-import { ArrowRight, Sparkles } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import dashboardPreview from '../../../assets/dashboard-preview.svg'
+import { Link } from 'react-router-dom'
 
 export const HeroSection = () => {
   return (
@@ -10,12 +11,12 @@ export const HeroSection = () => {
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/20 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="container relative mx-auto px-4 md:px-6 flex flex-col items-center text-center">
-        <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 mb-8">
+        {/* <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 mb-8">
           <Sparkles className="size-4 text-primary" />
           <span className="text-sm font-medium text-muted-foreground">
-            Announcing the new Task Boards
+            Currently in the MVP stage
           </span>
-        </div>
+        </div> */}
 
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-foreground max-w-4xl mb-6 leading-tight">
           Manage your projects with <span className="text-primary">effortless clarity</span>.
@@ -27,13 +28,15 @@ export const HeroSection = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-          <Button
-            size="lg"
-            className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground min-w-[200px] h-12 text-base font-medium"
-          >
-            Start Building
-            <ArrowRight className="ml-2 size-5" />
-          </Button>
+          <Link to="/signup">
+            <Button
+              size="lg"
+              className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground min-w-[200px] h-12 text-base font-medium cursor-pointer"
+            >
+              Start Building
+              <ArrowRight className="ml-2 size-5" />
+            </Button>
+          </Link>
           {/* <Button size="lg" variant="outline" className="w-full sm:w-auto min-w-[200px] h-12 border-border bg-transparent text-foreground hover:bg-secondary hover:text-secondary-foreground text-base font-medium">
             See how it works
           </Button> */}

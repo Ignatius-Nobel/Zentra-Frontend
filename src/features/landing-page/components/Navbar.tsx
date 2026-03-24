@@ -1,5 +1,6 @@
 import { Button } from '@/shared/ui/button'
 import { Rocket } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 export const Navbar = () => {
   return (
@@ -20,9 +21,11 @@ export const Navbar = () => {
           {/* <Button variant="ghost" className="hidden md:inline-flex text-zinc-300 hover:text-white hover:bg-zinc-800">
             Log in
           </Button> */}
-          <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
-            Get Started
-          </Button>
+          <Link to="/signup">
+            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer">
+              Get Started
+            </Button>
+          </Link>
         </div>
       </div>
     </header>
