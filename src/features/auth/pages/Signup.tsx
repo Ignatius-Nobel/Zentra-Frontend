@@ -9,6 +9,7 @@ import {
 } from '@/shared/ui/card'
 import { Input } from '@/shared/ui/input'
 import { Label } from '@/shared/ui/label'
+import { Link } from 'react-router-dom'
 
 export const Signup = () => {
   return (
@@ -23,15 +24,9 @@ export const Signup = () => {
       </CardHeader>
       <CardContent className="space-y-4">
         <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="first-name">First name</Label>
-              <Input id="first-name" placeholder="Ignatius" required />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="last-name">Last name</Label>
-              <Input id="last-name" placeholder="Nobel" required />
-            </div>
+          <div className="space-y-2">
+            <Label htmlFor="full-name">Full name</Label>
+            <Input id="full-name" placeholder="John Doe" required />
           </div>
           <div className="space-y-2">
             <Label htmlFor="email">Email address</Label>
@@ -39,7 +34,7 @@ export const Signup = () => {
           </div>
           <div className="space-y-2">
             <Label htmlFor="password">Password</Label>
-            <Input id="password" type="password" required />
+            <Input id="password" placeholder="********" type="password" required />
           </div>
           <Button
             type="submit"
@@ -69,12 +64,12 @@ export const Signup = () => {
         </div>
         <div className="mt-2">
           Already have an account?{' '}
-          <a
-            href="/signin"
+          <Link
+            to="/signin"
             className="text-primary font-medium hover:underline hover:text-primary/90"
           >
             Sign in
-          </a>
+          </Link>
         </div>
       </CardFooter>
     </Card>

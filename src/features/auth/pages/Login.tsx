@@ -9,6 +9,7 @@ import {
 } from '@/shared/ui/card'
 import { Input } from '@/shared/ui/input'
 import { Label } from '@/shared/ui/label'
+import { Link } from 'react-router-dom'
 
 export const Login = () => {
   return (
@@ -68,12 +69,12 @@ export const Login = () => {
       <CardFooter className="flex flex-col gap-2 border-t border-border mt-4 pt-4 text-center text-sm text-muted-foreground">
         <div>
           Don&apos;t have an account?{' '}
-          <a
-            href="/signup"
+          <Link
+            to="/signup"
             className="text-primary font-medium hover:underline hover:text-primary/90"
           >
             Sign up
-          </a>
+          </Link>
         </div>
       </CardFooter>
     </Card>
