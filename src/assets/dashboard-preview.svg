@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="600" viewBox="0 0 1024 600">
+  <defs>
+    <style>
+      .bg { fill: #18181b; }
+      .bg-card { fill: #27272a; }
+      .bg-muted { fill: #3f3f46; }
+      .border { stroke: #3f3f46; stroke-width: 1; }
+      .primary { fill: #6366f1; }
+      .text-main { fill: #ffffff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+      .text-muted { fill: #a1a1aa; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+      .font-semibold { font-weight: 600; }
+      .text-[10px] { font-size: 10px; }
+      .text-xs { font-size: 12px; }
+      .text-sm { font-size: 14px; }
+      .text-base { font-size: 16px; }
+      .text-lg { font-size: 18px; }
+    </style>
+    <clipPath id="board-clip">
+      <rect width="1024" height="600" rx="12" />
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#board-clip)">
+    <!-- Base Background -->
+    <rect width="1024" height="600" class="bg" />
+
+    <!-- Sidebar -->
+    <rect x="0" y="0" width="240" height="600" class="bg-card border" />
+    
+    <!-- Sidebar Logo / Title -->
+    <rect x="24" y="24" width="28" height="28" rx="6" class="primary" />
+    <rect x="30" y="30" width="16" height="16" rx="2" fill="#ffffff" fill-opacity="0.8" />
+    <text x="64" y="44" class="text-main text-base font-semibold">Project Alpha</text>
+    
+    <!-- Sidebar Navigation -->
+    <!-- Board -->
+    <rect x="16" y="80" width="208" height="36" rx="6" class="bg-muted" />
+    <rect x="26" y="88" width="16" height="16" rx="2" class="bg" fill-opacity="0.5" />
+    <text x="52" y="103" class="text-main text-sm font-semibold">Board</text>
+    
+    <!-- Timeline -->
+    <rect x="26" y="132" width="16" height="16" rx="8" class="bg-muted" />
+    <text x="52" y="145" class="text-muted text-sm font-semibold">Timeline</text>
+    
+    <!-- Settings -->
+    <rect x="26" y="176" width="16" height="16" class="bg-muted" />
+    <text x="52" y="189" class="text-muted text-sm font-semibold">Settings</text>
+
+    <!-- Main Content Area -->
+    <!-- Header -->
+    <line x1="240" y1="80" x2="1024" y2="80" class="border" />
+    <text x="272" y="50" class="text-main text-lg font-semibold">Sprint 12</text>
+    
+    <!-- Active Badge -->
+    <rect x="360" y="33" width="56" height="24" rx="12" fill="#6366f1" fill-opacity="0.1" />
+    <text x="372" y="49" class="text-xs font-semibold" fill="#6366f1">Active</text>
+
+    <!-- Avatars -->
+    <circle cx="940" cy="45" r="16" fill="#3f3f46" stroke="#18181b" stroke-width="2" />
+    <circle cx="916" cy="45" r="16" fill="#6366f1" stroke="#18181b" stroke-width="2" />
+    <circle cx="892" cy="45" r="16" fill="#10b981" stroke="#18181b" stroke-width="2" />
+    
+    <!-- Board Columns Grouped -->
+    <g transform="translate(272, 112)">
+      <!-- Column 1: To Do -->
+      <g transform="translate(0, 0)">
+        <text x="0" y="12" class="text-muted text-sm font-semibold">To Do <tspan class="text-[10px]" fill="#52525b">2</tspan></text>
+        <!-- Card 1 -->
+        <rect x="0" y="32" width="220" height="110" rx="8" class="bg-card border" />
+        <rect x="16" y="48" width="60" height="20" rx="4" class="bg" />
+        <text x="22" y="62" class="text-muted text-[10px]">Frontend</text>
+        <text x="16" y="92" class="text-main text-sm font-semibold">Design new landing page</text>
+        <text x="16" y="122" class="text-muted text-xs">Z-101</text>
+        <circle cx="196" cy="118" r="10" fill="#6366f1" />
+
+        <!-- Card 2 -->
+        <rect x="0" y="158" width="220" height="90" rx="8" class="bg-card border" />
+        <text x="16" y="196" class="text-main text-sm font-semibold">Update color variables</text>
+        <text x="16" y="226" class="text-muted text-xs">Z-102</text>
+        <circle cx="196" cy="222" r="10" fill="#3f3f46" />
+      </g>
+
+      <!-- Column 2: In Progress -->
+      <g transform="translate(250, 0)">
+        <text x="0" y="12" class="text-muted text-sm font-semibold" fill="#f59e0b">In Progress <tspan class="text-[10px]" fill="#52525b">1</tspan></text>
+        <!-- Card 1 -->
+        <rect x="0" y="32" width="220" height="110" rx="8" class="bg-card" stroke="#6366f1" stroke-width="2" />
+        <rect x="16" y="48" width="40" height="20" rx="4" fill="#f59e0b" fill-opacity="0.1" />
+        <text x="22" y="62" class="text-[10px]" fill="#f59e0b">API</text>
+        <text x="16" y="92" class="text-main text-sm font-semibold">Implement Authentication</text>
+        <text x="16" y="122" class="text-muted text-xs">Z-099</text>
+        <circle cx="196" cy="118" r="10" fill="#10b981" />
+      </g>
+
+      <!-- Column 3: In Review -->
+      <g transform="translate(500, 0)">
+        <text x="0" y="12" class="text-muted text-sm font-semibold" fill="#3b82f6">In Review <tspan class="text-[10px]" fill="#52525b">1</tspan></text>
+        <!-- Card 1 -->
+        <rect x="0" y="32" width="220" height="110" rx="8" class="bg-card border" />
+        <rect x="16" y="48" width="56" height="20" rx="4" fill="#ef4444" fill-opacity="0.1" />
+        <text x="22" y="62" class="text-[10px]" fill="#ef4444">Bugfix</text>
+        <text x="16" y="92" class="text-main text-sm font-semibold">Fix scroll issue on Layout</text>
+        <text x="16" y="122" class="text-muted text-xs">Z-098</text>
+        <circle cx="196" cy="118" r="10" fill="#6366f1" />
+      </g>
+    </g>
+  </g>
+</svg>
