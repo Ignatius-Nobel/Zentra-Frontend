@@ -1,3 +1,5 @@
+import { useState, useEffect, type FormEvent } from 'react'
+import { useNavigate, Link } from 'react-router-dom'
 import { Button } from '@/shared/ui/button'
 import {
   Card,
@@ -9,9 +11,36 @@ import {
 } from '@/shared/ui/card'
 import { Input } from '@/shared/ui/input'
 import { Label } from '@/shared/ui/label'
-import { Link } from 'react-router-dom'
+import { useAuthStore } from '../store/useAuthStore'
 
 export const Signup = () => {
+  const navigate = useNavigate()
+  const { signup, isLoading, error, isAuthenticated, clearError } = useAuthStore()
+
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  useEffect(() => {
+    return () => clearError() // Clear error on unmount
+  }, [clearError])
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/dashboard') // Or to a dashboard layout route
+    }
+  }, [isAuthenticated, navigate])
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault()
+    try {
+      await signup(name, email, password)
+      navigate('/signin')
+    } catch {
+      // Error is handled in the store
+    }
+  }
+
   return (
     <Card className="w-full">
       <CardHeader className="space-y-1">
@@ -23,24 +52,50 @@ export const Signup = () => {
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
-        <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+        <form className="space-y-4" onSubmit={handleSubmit}>
+          {error && (
+            <div className="p-3 text-sm text-destructive-foreground bg-destructive/10 rounded-md">
+              {error}
+            </div>
+          )}
           <div className="space-y-2">
             <Label htmlFor="full-name">Full name</Label>
-            <Input id="full-name" placeholder="John Doe" required />
+            <Input
+              id="full-name"
+              placeholder="John Doe"
+              required
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
           </div>
           <div className="space-y-2">
             <Label htmlFor="email">Email address</Label>
-            <Input id="email" type="email" placeholder="name@company.com" required />
+            <Input
+              id="email"
+              type="email"
+              placeholder="name@company.com"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
           <div className="space-y-2">
             <Label htmlFor="password">Password</Label>
-            <Input id="password" placeholder="********" type="password" required />
+            <Input
+              id="password"
+              placeholder="********"
+              type="password"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
           <Button
             type="submit"
+            disabled={isLoading}
             className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
           >
-            Create account
+            {isLoading ? 'Creating account...' : 'Create account'}
           </Button>
         </form>
       </CardContent>
