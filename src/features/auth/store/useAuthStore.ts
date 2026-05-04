@@ -14,7 +14,7 @@ interface AuthState {
 interface AuthActions {
   login: (email: string, password: string) => Promise<void>
   signup: (name: string, email: string, password: string) => Promise<void>
-  logout: () => void
+  logout: () => Promise<void>
   clearError: () => void
 }
 
@@ -51,11 +51,17 @@ export const useAuthStore = create<AuthState & AuthActions>()(
         }
       },
 
-      logout: () => {
+      logout: async () => {
         const { token } = get()
-        set({ user: null, token: null, isAuthenticated: false })
-        if (token) {
-          authService.logout(token).catch(console.error)
+        set({ isLoading: true, error: null })
+
+        try {
+          await authService.logout(token ?? undefined)
+          set({ user: null, token: null, isAuthenticated: false, isLoading: false })
+        } catch (error: unknown) {
+          const message = error instanceof Error ? error.message : 'An unknown error occurred'
+          set({ error: message, isLoading: false })
+          throw error
         }
       },
 

@@ -4,20 +4,30 @@ import { useNavigate } from 'react-router-dom'
 import { useAuthStore } from '@/features/auth/store/useAuthStore'
 export const Dashboard = () => {
   const navigate = useNavigate()
-  const { logout } = useAuthStore()
+  const { logout, isLoading, error } = useAuthStore()
   return (
     <div className="container mx-auto py-10 px-4 md:px-6">
       <h1 className="text-4xl font-bold tracking-tight mb-8">Dashboard</h1>
       <Button
         variant="ghost"
-        onClick={() => {
-          logout()
-          navigate('/')
+        onClick={async () => {
+          try {
+            await logout()
+            navigate('/')
+          } catch {
+            // Error is handled in the store
+          }
         }}
+        disabled={isLoading}
         className="text-foreground hover:bg-muted"
       >
-        Log out
+        {isLoading ? 'Logging out...' : 'Log out'}
       </Button>
+      {error && (
+        <div className="mt-4 rounded-md bg-destructive/10 p-3 text-sm text-destructive-foreground">
+          {error}
+        </div>
+      )}
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         <Card className="bg-card/50 backdrop-blur-sm border-border">

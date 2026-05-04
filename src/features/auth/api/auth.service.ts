@@ -46,13 +46,17 @@ export const authService = {
 
   async logout(token?: string): Promise<void> {
     if (token) {
-      await fetch(`${ENV.API_URL}/auth/logout`, {
+      const response = await fetch(`${ENV.API_URL}/auth/logout`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
       })
+
+      if (!response.ok) {
+        await handleResponse<void>(response)
+      }
     }
   },
 }

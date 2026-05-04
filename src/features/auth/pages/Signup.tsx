@@ -35,7 +35,6 @@ export const Signup = () => {
     e.preventDefault()
     try {
       await signup(name, email, password)
-      navigate('/signin')
     } catch {
       // Error is handled in the store
     }
